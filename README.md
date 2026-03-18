@@ -1,20 +1,83 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# React Admin Dashboard
 
-# Run and deploy your AI Studio app
+这是一个基于 React 18 和 TypeScript 构建的现代化企业级后台管理系统模板。本项目旨在提供一个开箱即用的、高可定制化的中后台前端解决方案，内置了完善的布局、主题切换机制以及基础的系统管理模块。
 
-This contains everything you need to run your app locally.
+## 🛠 技术栈
 
-View your app in AI Studio: https://ai.studio/apps/92492323-93bf-46db-b5b7-5ba5b4cb54ff
+本项目采用当前主流的前端技术栈，确保了开发体验的高效与项目运行的高性能：
 
-## Run Locally
+- **核心框架**: React 18 (Hooks & Functional Components)
+- **开发语言**: TypeScript (提供严格的类型检查与良好的代码提示)
+- **构建工具**: Vite (极速的本地开发服务器与优化的生产构建)
+- **UI 组件库**: Ant Design (企业级 UI 设计语言和 React 组件库)
+- **CSS 框架**: Tailwind CSS (原子化 CSS 框架，用于快速构建自定义样式)
+- **路由管理**: React Router (声明式的路由配置)
+- **状态管理**: React Context API (轻量级的全局状态共享，如主题配置)
 
-**Prerequisites:**  Node.js
+## ✨ 核心特性
 
+### 1. 动态主题系统
+- **暗黑/明亮模式切换**: 支持全局一键切换 Dark/Light 模式。
+- **主色调自定义**: 预设多种品牌主色调，支持动态切换并实时生效。
+- **侧边栏颜色自定义**: 支持独立设置侧边栏背景色，系统会智能根据背景色的深浅自动适配文字、图标及选中状态的颜色（如纯白背景下文字自动转为深色）。
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### 2. 响应式布局架构
+- **桌面端**: 经典的侧边栏 + 顶部导航条布局，支持侧边栏折叠/展开。
+- **移动端适配**: 在小屏幕设备下，侧边栏自动转换为抽屉（Drawer）模式，顶部导航栏提供汉堡菜单按钮，保证移动端的良好交互体验。
+
+### 3. 基础系统模块
+内置了中后台系统常见的基础管理模块，可作为二次开发的基石：
+- **用户管理**: 包含用户的增删改查、状态启停等基础功能。
+- **角色管理**: 包含角色的定义与权限分配的基础界面。
+
+### 4. 业务样例模块 (考勤管理)
+项目中包含了一个“考勤管理”模块（如员工管理），该模块**仅作为业务开发的参考样例**。它演示了如何在当前架构下：
+- 使用 Ant Design 的 `Table` 和 `Form` 组件实现复杂的 CRUD 操作。
+- 处理日期时间格式化。
+- 实现 Excel 模板下载与数据导入的交互逻辑。
+开发者可参考此模块的实现方式，快速开发自己的实际业务模块。
+
+## 📂 项目目录结构
+
+```text
+src/
+├── assets/            # 静态资源文件 (图片、全局样式等)
+├── components/        # 全局公共组件
+├── contexts/          # React Context (如 ThemeContext 主题状态管理)
+├── layouts/           # 页面布局组件 (Sidebar, Header 等)
+├── pages/             # 页面级组件
+│   ├── system/        # 系统管理模块 (用户、角色等)
+│   ├── attendance/    # 业务样例模块 (考勤管理)
+│   └── dashboard/     # 仪表盘/首页
+├── services/          # API 请求与数据服务层
+├── App.tsx            # 应用根组件与路由配置
+└── main.tsx           # 项目入口文件
+```
+
+## 🚀 快速开始
+
+### 环境要求
+- Node.js >= 16.x
+- npm 或 yarn
+
+### 安装依赖
+```bash
+npm install
+```
+
+### 启动开发服务器
+```bash
+npm run dev
+```
+
+### 生产环境构建
+```bash
+npm run build
+```
+
+## 📝 开发规范建议
+
+1. **组件开发**: 推荐使用函数式组件 (Functional Components) 和 React Hooks。
+2. **样式编写**: 优先使用 Tailwind CSS 的原子化类名进行样式编写，对于复杂的组件覆盖可以使用 Ant Design 的 `ConfigProvider` 或自定义 CSS。
+3. **状态管理**: 对于全局的主题、用户信息等状态，推荐使用 Context API；对于复杂的业务状态，可根据需要引入 Zustand 或 Redux 等状态管理库。
+4. **类型定义**: 充分利用 TypeScript 的特性，为组件的 Props、API 返回数据定义清晰的 Interface 或 Type。
